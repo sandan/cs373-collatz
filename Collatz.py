@@ -33,14 +33,22 @@ def collatz_eval (i, j) :
     return the max cycle length in the range [i, j]
     """
     # <your code>
+    assert i > 0
+    assert j > 0
+   
     c_len=0
-    end=j+1
     result=0
-    for num in range(i,end):
-        result=cycle_length(num)
-        if c_len < result:
-            c_len=result
+    k=max(i,j)
+    i=min(i,j)
 
+    assert i <= k
+
+    while( k >= i):
+        result=cycle_length(k)
+        if (c_len < result) :
+            c_len=result
+        k-=1
+    assert c_len >0
     return c_len
 
 # -------------
