@@ -1,0 +1,31 @@
+touch readme
+diligence$ git init
+diligence$ git add readme
+diligence$ git commit -m "first"
+[master (root-commit) a96f5d9] first
+ 1 file changed, 0 insertions(+), 0 deletions(-)
+ create mode 100644 readme
+diligence$ git remote add origin https://github.com/sandan/cs373-collatz.git
+diligence$ git push -u origin master
+
+configuring
+% git config --global user.name "John Galt"
+% git config --global user.email jgalt@example.com
+% git config --global push.default simple
+% git config --global color.ui true
+
+% git config --global core.autocrlf input (for linux)
+
+checkinbg config
+% git config -l
+
+cloning
+% git clone git://github.com/gpdowning/cs373.git
+
+pulling
+% cd folder-that-was-just-cloned-by-running-cloning
+% git pull
+
+checking status of a repo
+% cd ooplqc
+% git status
