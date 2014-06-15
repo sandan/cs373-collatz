@@ -37,12 +37,15 @@ def collatz_eval (i, j) :
     """
     # <your code>
     c_len=0
-    end=j+1
     result=0
-    for num in range(i,end):
-        result=cycle_length(num)
-        if c_len < result:
+    k=max(i,j)
+    i=min(i,j)
+   
+    while( k >= i):
+        result=cycle_length(k)
+        if (c_len < result) :
             c_len=result
+        k-=1
 
     return c_len
 
