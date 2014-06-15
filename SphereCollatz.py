@@ -7,7 +7,6 @@
 # -------
 # imports
 # -------
-
 import sys
 # ------------
 # collatz_read
