@@ -108,6 +108,12 @@ class TestCollatz (TestCase) :
             self.fail('AssertionError not raised')
 
 
+    def test_eval_10 (self) :
+        v = collatz_eval(20, 20)
+        self.assertEqual(v, 8)
+        w = collatz_eval(19, 19)
+        self.assertEqual(w, 21)
+
     # -----
     # print
     # -----
