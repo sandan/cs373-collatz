@@ -42,6 +42,15 @@ def collatz_eval (i, j) :
     result=0
     k=max(i,j)
     i=min(i,j)
+    m=k/2
+
+    """optimization 2
+       let i,j natural numbers
+       if i<=j and i < j/2 then
+         collatz_eval(i,j)=collatz_eval(j/2,j)
+    """
+    if (i < m):
+        return collatz_eval(m,k)
 
     assert i <= k
 
