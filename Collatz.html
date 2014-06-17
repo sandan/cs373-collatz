@@ -30,24 +30,48 @@
 <font color="#000000" face="helvetica, arial"><a name="Cache">class <strong>Cache</strong></a></font></td></tr>
     
 <tr bgcolor="#ffc8d8"><td rowspan=2><tt>&nbsp;&nbsp;&nbsp;</tt></td>
-<td colspan=2><tt>#&nbsp;------------<br>
-#&nbsp;The&nbsp;cache&nbsp;implementation&nbsp;is&nbsp;simply&nbsp;an&nbsp;array.<br>
-#&nbsp;cache[i]&nbsp;returns&nbsp;the&nbsp;cycle_length&nbsp;of&nbsp;i.<br>
-#&nbsp;Since&nbsp;the&nbsp;Collatz&nbsp;inputs&nbsp;are&nbsp;&gt;&nbsp;0,&nbsp;but&nbsp;the&nbsp;cache&nbsp;<br>
-#&nbsp;is&nbsp;zero-indexed,&nbsp;the&nbsp;nth&nbsp;entry&nbsp;is&nbsp;read[n-1]&nbsp;and<br>
-#&nbsp;similarly&nbsp;for&nbsp;write.<br>
-#<br>
-#&nbsp;see&nbsp;cycle_length&nbsp;for&nbsp;details&nbsp;on&nbsp;usage&nbsp;<br>
-#&nbsp;------------<br>&nbsp;</tt></td></tr>
+<td colspan=2><tt>The&nbsp;<a href="#Cache">Cache</a>&nbsp;object&nbsp;is&nbsp;initialized&nbsp;with&nbsp;an&nbsp;integer&nbsp;that<br>
+determines&nbsp;the&nbsp;size&nbsp;of&nbsp;the&nbsp;cache.<br>
+&nbsp;<br>
+The&nbsp;cache&nbsp;is&nbsp;an&nbsp;object&nbsp;that&nbsp;keeps&nbsp;a&nbsp;list.<br>
+It&nbsp;has&nbsp;basic&nbsp;read&nbsp;and&nbsp;write&nbsp;functions&nbsp;as&nbsp;well<br>
+as&nbsp;a&nbsp;size&nbsp;function.<br>
+&nbsp;<br>
+Since&nbsp;the&nbsp;Collatz&nbsp;inputs&nbsp;are&nbsp;&gt;&nbsp;0,&nbsp;but&nbsp;the&nbsp;cache&nbsp;<br>
+is&nbsp;zero-indexed,&nbsp;the&nbsp;nth&nbsp;entry&nbsp;is&nbsp;read[n-1]&nbsp;and<br>
+similarly&nbsp;for&nbsp;write.<br>
+&nbsp;&nbsp;&nbsp;<br>
+&nbsp;<br>
+see&nbsp;cycle_length&nbsp;and&nbsp;collatz_eval&nbsp;for&nbsp;details&nbsp;on&nbsp;usage<br>&nbsp;</tt></td></tr>
 <tr><td>&nbsp;</td>
 <td width="100%">Methods defined here:<br>
 <dl><dt><a name="Cache-__init__"><strong>__init__</strong></a>(self, size)</dt></dl>
 
-<dl><dt><a name="Cache-read"><strong>read</strong></a>(self, i)</dt></dl>
+<dl><dt><a name="Cache-read"><strong>read</strong></a>(self, i)</dt><dd><tt>The&nbsp;read&nbsp;method&nbsp;takes&nbsp;an&nbsp;index&nbsp;i&nbsp;as&nbsp;input.<br>
+An&nbsp;assertion&nbsp;is&nbsp;placed&nbsp;to&nbsp;make&nbsp;sure&nbsp;i&nbsp;&gt;&nbsp;0.<br>
+A&nbsp;try&nbsp;block&nbsp;is&nbsp;used&nbsp;to&nbsp;return&nbsp;whatever&nbsp;is<br>
+in&nbsp;the&nbsp;ith&nbsp;index&nbsp;of&nbsp;the&nbsp;cache.&nbsp;Since&nbsp;the&nbsp;cache<br>
+is&nbsp;implemented&nbsp;as&nbsp;a&nbsp;list,&nbsp;the&nbsp;i-1&nbsp;th&nbsp;element<br>
+is&nbsp;indexed&nbsp;and&nbsp;returned.<br>
+&nbsp;<br>
+If&nbsp;an&nbsp;IndexError&nbsp;exception&nbsp;is&nbsp;raised,<br>
+it&nbsp;is&nbsp;caught&nbsp;and&nbsp;the&nbsp;value&nbsp;0&nbsp;is&nbsp;returned&nbsp;instead.</tt></dd></dl>
 
-<dl><dt><a name="Cache-size"><strong>size</strong></a>(self)</dt></dl>
+<dl><dt><a name="Cache-size"><strong>size</strong></a>(self)</dt><dd><tt>The&nbsp;size&nbsp;method&nbsp;takes&nbsp;no&nbsp;arguments&nbsp;and&nbsp;simply&nbsp;returns<br>
+the&nbsp;length&nbsp;of&nbsp;the&nbsp;cache&nbsp;(i.e.&nbsp;len(cache))</tt></dd></dl>
 
-<dl><dt><a name="Cache-write"><strong>write</strong></a>(self, i, val)</dt></dl>
+<dl><dt><a name="Cache-write"><strong>write</strong></a>(self, i, val)</dt><dd><tt>The&nbsp;write&nbsp;method&nbsp;takes&nbsp;an&nbsp;index&nbsp;i&nbsp;as&nbsp;input&nbsp;as&nbsp;<br>
+well&nbsp;as&nbsp;value&nbsp;val&nbsp;to&nbsp;write&nbsp;in&nbsp;index&nbsp;i.<br>
+&nbsp;<br>
+An&nbsp;assertion&nbsp;is&nbsp;placed&nbsp;to&nbsp;make&nbsp;sure&nbsp;i&nbsp;&gt;&nbsp;0.<br>
+&nbsp;<br>
+A&nbsp;try&nbsp;block&nbsp;is&nbsp;used&nbsp;in&nbsp;case&nbsp;an&nbsp;IndexError&nbsp;exception<br>
+is&nbsp;raised.&nbsp;In&nbsp;case&nbsp;it&nbsp;is&nbsp;raised,&nbsp;the&nbsp;write&nbsp;to&nbsp;the<br>
+cache&nbsp;fails&nbsp;and&nbsp;the&nbsp;cache&nbsp;is&nbsp;not&nbsp;modified&nbsp;and&nbsp;no&nbsp;<br>
+value&nbsp;is&nbsp;returned.<br>
+&nbsp;<br>
+Otherwise,&nbsp;the&nbsp;cache&nbsp;is&nbsp;modified&nbsp;by&nbsp;writing&nbsp;val&nbsp;to&nbsp;<br>
+cache[i-1].&nbsp;Again,&nbsp;no&nbsp;value&nbsp;is&nbsp;returned.</tt></dd></dl>
 
 </td></tr></table></td></tr></table><p>
 <table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
@@ -58,7 +82,20 @@
 <tr><td bgcolor="#eeaa77"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
 <td width="100%"><dl><dt><a name="-collatz_eval"><strong>collatz_eval</strong></a>(i, j)</dt><dd><tt>i&nbsp;is&nbsp;the&nbsp;beginning&nbsp;of&nbsp;the&nbsp;range,&nbsp;inclusive<br>
 j&nbsp;is&nbsp;the&nbsp;end&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;of&nbsp;the&nbsp;range,&nbsp;inclusive<br>
-return&nbsp;the&nbsp;max&nbsp;cycle&nbsp;length&nbsp;in&nbsp;the&nbsp;range&nbsp;[i,&nbsp;j]</tt></dd></dl>
+return&nbsp;the&nbsp;max&nbsp;cycle&nbsp;length&nbsp;in&nbsp;the&nbsp;range&nbsp;[i,&nbsp;j]<br>
+&nbsp;<br>
+implements&nbsp;optimization&nbsp;2&nbsp;which&nbsp;halves&nbsp;the&nbsp;space<br>
+of&nbsp;cycle_length&nbsp;calculations:<br>
+&nbsp;&nbsp;&nbsp;let&nbsp;i,j&nbsp;natural&nbsp;numbers<br>
+&nbsp;&nbsp;&nbsp;if&nbsp;i&lt;=j&nbsp;and&nbsp;i&nbsp;&lt;&nbsp;j/2&nbsp;then&nbsp;<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="#-collatz_eval">collatz_eval</a>(i,j)=<a href="#-collatz_eval">collatz_eval</a>(j/2,j)<br>
+&nbsp;<br>
+cache&nbsp;usage:<br>
+&nbsp;&nbsp;An&nbsp;empty&nbsp;cache&nbsp;is&nbsp;instantiated&nbsp;here&nbsp;with&nbsp;size&nbsp;k<br>
+&nbsp;&nbsp;which&nbsp;is&nbsp;the&nbsp;maximim&nbsp;of&nbsp;the&nbsp;inputs&nbsp;i,j&nbsp;given.<br>
+&nbsp;&nbsp;Thus&nbsp;the&nbsp;cache&nbsp;will&nbsp;contain&nbsp;indices&nbsp;from&nbsp;0&nbsp;to&nbsp;k-1.&nbsp;<br>
+&nbsp;&nbsp;The&nbsp;cache&nbsp;is&nbsp;passed&nbsp;to&nbsp;the&nbsp;cycle_length&nbsp;function<br>
+&nbsp;&nbsp;which&nbsp;uses&nbsp;it&nbsp;to&nbsp;look&nbsp;up&nbsp;and&nbsp;write&nbsp;to&nbsp;the&nbsp;cache.</tt></dd></dl>
  <dl><dt><a name="-collatz_print"><strong>collatz_print</strong></a>(w, i, j, v)</dt><dd><tt>print&nbsp;three&nbsp;ints<br>
 w&nbsp;is&nbsp;a&nbsp;writer<br>
 i&nbsp;is&nbsp;the&nbsp;beginning&nbsp;of&nbsp;the&nbsp;range,&nbsp;inclusive<br>
@@ -70,6 +107,25 @@ return&nbsp;a&nbsp;list&nbsp;of&nbsp;the&nbsp;two&nbsp;ints,&nbsp;otherwise&nbsp
  <dl><dt><a name="-collatz_solve"><strong>collatz_solve</strong></a>(r, w)</dt><dd><tt>read,&nbsp;eval,&nbsp;print&nbsp;loop<br>
 r&nbsp;is&nbsp;a&nbsp;reader<br>
 w&nbsp;is&nbsp;a&nbsp;writer</tt></dd></dl>
- <dl><dt><a name="-cycle_length"><strong>cycle_length</strong></a>(n, cache)</dt></dl>
+ <dl><dt><a name="-cycle_length"><strong>cycle_length</strong></a>(n, cache)</dt><dd><tt>read&nbsp;two&nbsp;ints<br>
+r&nbsp;is&nbsp;a&nbsp;reader<br>
+return&nbsp;a&nbsp;list&nbsp;of&nbsp;the&nbsp;two&nbsp;ints,&nbsp;otherwise&nbsp;a&nbsp;list&nbsp;of&nbsp;zeros<br>
+&nbsp;<br>
+implements&nbsp;optimization&nbsp;1&nbsp;which&nbsp;combines&nbsp;two&nbsp;steps&nbsp;of&nbsp;the&nbsp;<br>
+collatz&nbsp;algorithm&nbsp;into&nbsp;one&nbsp;whenever&nbsp;n&nbsp;is&nbsp;odd&nbsp;by<br>
+calculating&nbsp;n&nbsp;=&nbsp;n&nbsp;+&nbsp;(n&gt;&gt;1)&nbsp;+1.&nbsp;The&nbsp;cycle&nbsp;length&nbsp;c_len<br>
+is&nbsp;incremented&nbsp;accordingly.<br>
+&nbsp;<br>
+cache&nbsp;usage:<br>
+&nbsp;Before&nbsp;the&nbsp;cycle&nbsp;length&nbsp;is&nbsp;actually&nbsp;calculated,<br>
+&nbsp;it&nbsp;will&nbsp;first&nbsp;read&nbsp;the&nbsp;cache&nbsp;to&nbsp;obtain&nbsp;the&nbsp;value&nbsp;in&nbsp;<br>
+&nbsp;the&nbsp;nth&nbsp;index.&nbsp;If&nbsp;there&nbsp;is&nbsp;no&nbsp;such&nbsp;value,&nbsp;0&nbsp;is&nbsp;returned<br>
+&nbsp;since&nbsp;the&nbsp;cache&nbsp;is&nbsp;intialized&nbsp;to&nbsp;0.<br>
+&nbsp;Otherwise&nbsp;if&nbsp;there&nbsp;is&nbsp;a&nbsp;cache&nbsp;hit&nbsp;then&nbsp;the&nbsp;cycle&nbsp;length<br>
+&nbsp;is&nbsp;adjusted&nbsp;accordingly&nbsp;and&nbsp;the&nbsp;cache&nbsp;is&nbsp;written&nbsp;to&nbsp;<br>
+&nbsp;accordingly&nbsp;with&nbsp;that&nbsp;value.&nbsp;The&nbsp;value&nbsp;is&nbsp;then&nbsp;returned.<br>
+&nbsp;<br>
+&nbsp;In&nbsp;any&nbsp;case&nbsp;once&nbsp;the&nbsp;cycle_length&nbsp;calculation&nbsp;is&nbsp;done,<br>
+&nbsp;the&nbsp;cache&nbsp;is&nbsp;written&nbsp;to.</tt></dd></dl>
 </td></tr></table>
 </body></html>
