@@ -1,3 +1,15 @@
+commit f73400e57593035b60bdb962a737cc81f216a767
+Author: Mark <mas5774@cs.utexas.edu>
+Date:   Tue Jun 17 11:11:35 2014 -0500
+
+    Added more comments for pydocs of Collatz. This resolves #22 and #10.
+
+commit f8b6df84864a35368c8534588314876f64b0491e
+Author: Mark <mas5774@cs.utexas.edu>
+Date:   Mon Jun 16 21:01:46 2014 -0500
+
+    Added the log of commits.
+
 commit b1a4d44596fd334c2d811132ca802d5c95757f27
 Author: Mark <mas5774@cs.utexas.edu>
 Date:   Mon Jun 16 20:54:03 2014 -0500
