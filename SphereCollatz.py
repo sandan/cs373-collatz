@@ -1,13 +1,41 @@
 #!/usr/bin/env python3
-
-# ------------------------------
-# Copyright (C) 2014
-# Mark Sandan
-# ------------------------------
-# -------
-# imports
-# -------
 import sys
+
+class Cache:
+    def __init__(self,size):
+        self.cache=[0]*size
+    # -------------
+    # write_cache
+    # -------------
+
+    def write(self,i,val):
+        try:
+            assert i > 0
+            if (self.cache[i-1] > 0): #then already wrote val
+                return
+
+            self.cache[i-1]=val
+
+        except IndexError:
+            pass
+
+
+    # -------------
+    #  read_cache
+    # -------------
+
+    def read(self,i):
+        try:
+            assert i > 0
+            return self.cache[i-1]
+
+        except IndexError:
+            return 0
+
+    def size(self):
+        return len(self.cache)
+
+
 # ------------
 # collatz_read
 # ------------
@@ -23,12 +51,12 @@ def collatz_read (r) :
         return []
     a = s.split()
     return [int(v) for v in a]
-
 # ------------
 # collatz_eval
 # ------------
 
 def collatz_eval (i, j) :
+
     """
     i is the beginning of the range, inclusive
     j is the end       of the range, inclusive
@@ -42,8 +70,7 @@ def collatz_eval (i, j) :
     result=0
     k=max(i,j)
     i=min(i,j)
-    m=k/2
-
+    m=k>>1
     """optimization 2
        let i,j natural numbers
        if i<=j and i < j/2 then
@@ -54,30 +81,46 @@ def collatz_eval (i, j) :
 
     assert i <= k
 
+    #initialize a cold cache
+    cache = Cache(k)
+    assert cache.size() == k
+
     while( k >= i):
-        result=cycle_length(k)
+        result=cycle_length(k,cache)
         if (c_len < result) :
             c_len=result
         k-=1
-    assert c_len >0
+    assert c_len > 0
     return c_len
+
 
 # -------------
 # cycle_length
 # -------------
-def cycle_length (n) :
+
+def cycle_length (n,cache) :
     assert n > 0
     c = 1
+    m = n
+
     while n > 1 :
+        x = cache.read(n)
+        if (x > 0):
+            c = (c + x) - 1
+            assert c > 0
+            cache.write(m,c)
+            return c
+
         if (n % 2) == 0 :
-            n = (n // 2)
+            n = (n >> 1)
             c+=1
         else : #calculates (3n+1)/2
-            n = n + (n >> 1) + 1
-            c+=2
-    
+            n = n + (n>>1) + 1
+            c += 2
     assert c > 0
+    cache.write(m,c)
     return c
+
 
 # -------------
 # collatz_print
@@ -115,5 +158,3 @@ def collatz_solve (r, w) :
 # ----
 
 collatz_solve(sys.stdin, sys.stdout)
-
-
