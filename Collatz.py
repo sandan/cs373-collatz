@@ -1,10 +1,51 @@
 #!/usr/bin/env python3
 
 # ---------------------------
-# projects/collatz/Collatz.py
 # Copyright (C) 2014
-# Glenn P. Downing
+# Mark Sandan
 # ---------------------------
+
+# ------------
+# The cache implementation is simply an array.
+# cache[i] returns the cycle_length of i.
+# Since the Collatz inputs are > 0, but the cache 
+# is zero-indexed, the nth entry is read[n-1] and
+# similarly for write.
+#
+# see cycle_length for details on usage 
+# ------------
+class Cache:
+    def __init__(self,size):
+        self.cache=[0]*size
+    # -------------
+    # write_cache
+    # -------------
+    
+    def write(self,i,val):
+        try:
+            if (self.cache[i-1] > 0): #then already wrote val
+                return
+        
+            self.cache[i-1]=val
+        
+        except IndexError:
+            pass
+    
+        
+    # -------------
+    #  read_cache
+    # -------------
+    
+    def read(self,i):
+        try:
+            return self.cache[i-1]
+      
+        except IndexError:
+            return 0
+    
+    def size():
+        return len(self.cache)
+                
 
 # ------------
 # collatz_read
@@ -40,7 +81,7 @@ def collatz_eval (i, j) :
     result=0
     k=max(i,j)
     i=min(i,j)
-    m=k/2
+    m=k>>1
     """optimization 2
        let i,j natural numbers
        if i<=j and i < j/2 then 
@@ -51,6 +92,7 @@ def collatz_eval (i, j) :
 
     assert i <= k
 
+    #initialize a cold cache
     while( k >= i):
         result=cycle_length(k)
         if (c_len < result) :
@@ -62,12 +104,15 @@ def collatz_eval (i, j) :
 # -------------
 # cycle_length
 # -------------
+
 def cycle_length (n) :
     assert n > 0
     c = 1
+    m = n
     while n > 1 :
+
         if (n % 2) == 0 :
-            n = (n // 2)
+            n = (n >> 1)
             c+=1
         else : #calculates (3n+1)/2
             n = n + (n>>1) + 1
