@@ -1,0 +1,75 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html><head><title>Python: module Collatz</title>
+</head><body bgcolor="#f0f0f8">
+
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="heading">
+<tr bgcolor="#7799ee">
+<td valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial">&nbsp;<br><big><big><strong>Collatz</strong></big></big></font></td
+><td align=right valign=bottom
+><font color="#ffffff" face="helvetica, arial"><a href=".">index</a><br><a href="file:/v/filer4b/v38q001/mas5774/summer14/private-repo/Collatz.py">/v/filer4b/v38q001/mas5774/summer14/private-repo/Collatz.py</a></font></td></tr></table>
+    <p><tt>#&nbsp;---------------------------<br>
+#&nbsp;Copyright&nbsp;(C)&nbsp;2014<br>
+#&nbsp;Mark&nbsp;Sandan<br>
+#&nbsp;---------------------------</tt></p>
+<p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ee77aa">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Classes</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#ee77aa"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><dl>
+<dt><font face="helvetica, arial"><a href="Collatz.html#Cache">Cache</a>
+</font></dt></dl>
+ <p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ffc8d8">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#000000" face="helvetica, arial"><a name="Cache">class <strong>Cache</strong></a></font></td></tr>
+    
+<tr bgcolor="#ffc8d8"><td rowspan=2><tt>&nbsp;&nbsp;&nbsp;</tt></td>
+<td colspan=2><tt>#&nbsp;------------<br>
+#&nbsp;The&nbsp;cache&nbsp;implementation&nbsp;is&nbsp;simply&nbsp;an&nbsp;array.<br>
+#&nbsp;cache[i]&nbsp;returns&nbsp;the&nbsp;cycle_length&nbsp;of&nbsp;i.<br>
+#&nbsp;Since&nbsp;the&nbsp;Collatz&nbsp;inputs&nbsp;are&nbsp;&gt;&nbsp;0,&nbsp;but&nbsp;the&nbsp;cache&nbsp;<br>
+#&nbsp;is&nbsp;zero-indexed,&nbsp;the&nbsp;nth&nbsp;entry&nbsp;is&nbsp;read[n-1]&nbsp;and<br>
+#&nbsp;similarly&nbsp;for&nbsp;write.<br>
+#<br>
+#&nbsp;see&nbsp;cycle_length&nbsp;for&nbsp;details&nbsp;on&nbsp;usage&nbsp;<br>
+#&nbsp;------------<br>&nbsp;</tt></td></tr>
+<tr><td>&nbsp;</td>
+<td width="100%">Methods defined here:<br>
+<dl><dt><a name="Cache-__init__"><strong>__init__</strong></a>(self, size)</dt></dl>
+
+<dl><dt><a name="Cache-read"><strong>read</strong></a>(self, i)</dt></dl>
+
+<dl><dt><a name="Cache-size"><strong>size</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="Cache-write"><strong>write</strong></a>(self, i, val)</dt></dl>
+
+</td></tr></table></td></tr></table><p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#eeaa77">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Functions</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#eeaa77"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><dl><dt><a name="-collatz_eval"><strong>collatz_eval</strong></a>(i, j)</dt><dd><tt>i&nbsp;is&nbsp;the&nbsp;beginning&nbsp;of&nbsp;the&nbsp;range,&nbsp;inclusive<br>
+j&nbsp;is&nbsp;the&nbsp;end&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;of&nbsp;the&nbsp;range,&nbsp;inclusive<br>
+return&nbsp;the&nbsp;max&nbsp;cycle&nbsp;length&nbsp;in&nbsp;the&nbsp;range&nbsp;[i,&nbsp;j]</tt></dd></dl>
+ <dl><dt><a name="-collatz_print"><strong>collatz_print</strong></a>(w, i, j, v)</dt><dd><tt>print&nbsp;three&nbsp;ints<br>
+w&nbsp;is&nbsp;a&nbsp;writer<br>
+i&nbsp;is&nbsp;the&nbsp;beginning&nbsp;of&nbsp;the&nbsp;range,&nbsp;inclusive<br>
+j&nbsp;is&nbsp;the&nbsp;end&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;of&nbsp;the&nbsp;range,&nbsp;inclusive<br>
+v&nbsp;is&nbsp;the&nbsp;max&nbsp;cycle&nbsp;length</tt></dd></dl>
+ <dl><dt><a name="-collatz_read"><strong>collatz_read</strong></a>(r)</dt><dd><tt>read&nbsp;two&nbsp;ints<br>
+r&nbsp;is&nbsp;a&nbsp;reader<br>
+return&nbsp;a&nbsp;list&nbsp;of&nbsp;the&nbsp;two&nbsp;ints,&nbsp;otherwise&nbsp;a&nbsp;list&nbsp;of&nbsp;zeros</tt></dd></dl>
+ <dl><dt><a name="-collatz_solve"><strong>collatz_solve</strong></a>(r, w)</dt><dd><tt>read,&nbsp;eval,&nbsp;print&nbsp;loop<br>
+r&nbsp;is&nbsp;a&nbsp;reader<br>
+w&nbsp;is&nbsp;a&nbsp;writer</tt></dd></dl>
+ <dl><dt><a name="-cycle_length"><strong>cycle_length</strong></a>(n, cache)</dt></dl>
+</td></tr></table>
+</body></html>
