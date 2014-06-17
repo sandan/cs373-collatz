@@ -20,13 +20,43 @@ To obtain coverage of the test:
 from io       import StringIO
 from unittest import main, TestCase
 
-from Collatz import collatz_read, collatz_eval, collatz_print, collatz_solve
+from Collatz import Cache, collatz_read, collatz_eval, collatz_print, collatz_solve
 
 # -----------
 # TestCollatz
 # -----------
 
 class TestCollatz (TestCase) :
+    # ----
+    # Cache
+    # ----
+
+    def test_cache_1 (self) :
+        c = Cache(10)
+        self.assertEqual(10, c.size())
+
+
+    def test_cache_2 (self) :
+        c = Cache(10)
+        c.write(2, 10)
+        self.assertEqual(c.read(2), 10)
+
+
+    def test_cache_3 (self) :
+        c = Cache(0)
+        self.assertEqual(c.size(), 0)
+
+
+    def test_cache_4 (self) :
+        c = Cache(10)
+        c.write(1, 100)
+        self.assertEqual(c.read(1), 100)
+
+
+    def test_cache_5 (self) :
+        c = Cache(10)
+        self.assertEqual(c.read(3), 0)
+
     # ----
     # read
     # ----
@@ -111,8 +141,21 @@ class TestCollatz (TestCase) :
     def test_eval_10 (self) :
         v = collatz_eval(20, 20)
         self.assertEqual(v, 8)
+
+    def test_eval_11 (self) :
         w = collatz_eval(19, 19)
         self.assertEqual(w, 21)
+    def test_eval_12 (self) :
+        w = collatz_eval(1, 999999)
+        self.assertEqual(w, 525)
+
+    def test_eval_13 (self) :
+        w = collatz_eval(999999, 1)
+        self.assertEqual(w, 525)
+
+    def test_eval_14 (self) :
+        w = collatz_eval(999999, 999999)
+        self.assertEqual(w, 259)
 
     # -----
     # print
