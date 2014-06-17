@@ -1,0 +1,125 @@
+commit b1a4d44596fd334c2d811132ca802d5c95757f27
+Author: Mark <mas5774@cs.utexas.edu>
+Date:   Mon Jun 16 20:54:03 2014 -0500
+
+    Pydoc'd Collatz implementation. This resolves #11
+
+commit ea58ba76b950dfa6ec2da8380d55c5180a2d97b6
+Author: Mark <mas5774@cs.utexas.edu>
+Date:   Mon Jun 16 20:48:55 2014 -0500
+
+    Updated the test output
+
+commit 726876950ed6b122f6a17e9b6ebb6e87c8527c4e
+Author: Mark <mas5774@cs.utexas.edu>
+Date:   Mon Jun 16 20:27:57 2014 -0500
+
+    Cache implementation passes on Sphere. This resolves #21
+
+commit 3e05f0530f8a592550294abd0ae472bdcc5f56ae
+Author: Mark <mas5774@cs.utexas.edu>
+Date:   Mon Jun 16 20:02:04 2014 -0500
+
+    Cache implementation passing unit and acceptance tests. This resolves #9, resolves #1, resolves #8
+
+commit 7dcb8a7429f98f18628857be7120bad2ea683ea2
+Author: Mark <mas5774@cs.utexas.edu>
+Date:   Mon Jun 16 19:22:45 2014 -0500
+
+    Added more tests for the cache and used a cache object implementation. Also, I was able to push to the public-test repo so this resolves #20 and #1
+
+commit 2adeafd775f5100d20be34cf3cdeb8cb109c1384
+Author: Mark <mas5774@cs.utexas.edu>
+Date:   Mon Jun 16 08:51:09 2014 -0500
+
+    I'm adding the renamed test files. This resolves #18
+
+commit 5cf5de90b54ee46563165cf2c1b86784010e22fd
+Author: Mark <mas5774@cs.utexas.edu>
+Date:   Mon Jun 16 08:40:43 2014 -0500
+
+    I obtained the coverage report for TestCollatz. This resolves #17
+
+commit 06d9f757a6379ae674360936624efb400fbefd87
+Author: Mark <mas5774@cs.utexas.edu>
+Date:   Mon Jun 16 08:37:31 2014 -0500
+
+    I added 1000 acceptance tests and their output. This #resolves #7
+
+commit 728f0e10bc69cdeebfcbcc602ff03b6516fe5db1
+Author: Mark <mas5774@cs.utexas.edu>
+Date:   Mon Jun 16 07:06:17 2014 -0500
+
+    Added 1000 test cases. This resolves #7.
+
+commit 3d7a5e38793610d3eebd97960bbaa45141744197
+Author: Mark <mas5774@cs.utexas.edu>
+Date:   Mon Jun 16 06:32:15 2014 -0500
+
+    Implemented optimization 2. This resolves #15 and resolves #16 since Sphere accepted SphereCollatz.
+
+commit 9f24e5a5ca84938973def18c01bfb70680e10979
+Author: Mark <mas5774@cs.utexas.edu>
+Date:   Mon Jun 16 06:23:05 2014 -0500
+
+    I implemented more tests.
+
+commit 64b6a49f0e19fec9fb93c88ca5979eabe65e238a
+Author: Mark <mas5774@cs.utexas.edu>
+Date:   Mon Jun 16 06:22:18 2014 -0500
+
+    I implemented the first optimization. This resolves #14
+
+commit f90d1aeb38d8e3c14cac81cdf64c4a64b47710d9
+Author: Mark <mas5774@cs.utexas.edu>
+Date:   Sun Jun 15 14:42:06 2014 -0500
+
+    I added more unit tests (average of at least 3 per function). This resolves #13.
+
+commit c89d1fe15a3eda32196816017f4159f402953ac6
+Author: Mark <mas5774@cs.utexas.edu>
+Date:   Sun Jun 15 14:30:17 2014 -0500
+
+    I included more assertions for post and pre conditions, resolves #12
+
+commit 340cd4d41d444ce296951b66cde2df778ff38f21
+Author: Mark <mas5774@cs.utexas.edu>
+Date:   Sun Jun 15 00:29:23 2014 -0500
+
+    Implementation now get time limit exceeded on sphere. This resolves #3 and resolves #6
+
+commit 3c282b2ba7f5feb6cbc10bff59d665bfd37b22cd
+Author: Mark <mas5774@cs.utexas.edu>
+Date:   Sun Jun 15 00:13:28 2014 -0500
+
+    Refactored collatz_eval to get rid of list. This implementation still gets wrong answer (WA) on Sphere
+
+commit 47915d8f674b3d0f53c427c94ebe7d68d8b350ca
+Author: Mark <mas5774@cs.utexas.edu>
+Date:   Sat Jun 14 23:25:24 2014 -0500
+
+    + SphereCollatz.py. Now it resolves #5.
+
+commit 057c2f59f2d69003de6097a9ef504af5e737c4ce
+Author: Mark <mas5774@cs.utexas.edu>
+Date:   Sat Jun 14 23:20:08 2014 -0500
+
+    + SphereCollatz.py. Resolves #5
+
+commit c631faba59f01810afddd829933ab5d4ffcfd2e8
+Author: Mark <mas5774@cs.utexas.edu>
+Date:   Sat Jun 14 23:09:21 2014 -0500
+
+    +{Collatz,TestCollatz,RunCollatz}.py resolves #2,resolves #4
+
+commit 8359f2a1413cdc3529967d2d9783073451664db2
+Author: Mark <mas5774@cs.utexas.edu>
+Date:   Sat Jun 14 20:30:44 2014 -0500
+
+    second
+
+commit a96f5d9ab68b68e68dd87ae9472f291beb569908
+Author: Mark <mas5774@cs.utexas.edu>
+Date:   Sat Jun 14 20:17:42 2014 -0500
+
+    first
